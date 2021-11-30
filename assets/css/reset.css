@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap&subset=korean');
+/*font-family:'Noto Sans KR',sans-serif;*/
+*, *:before, *:after {
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    image-rendering: optimizeSpeed;             /*                     */
+    image-rendering: -moz-crisp-edges;          /* Firefox             */
+    image-rendering: -o-crisp-edges;            /* Opera               */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and Safari) */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed       */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                */
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,
+img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u,
+i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table,
+caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details,
+embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby,
+section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {display: block;}
+body {line-height: 1;}
+ul, ol{list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {content: '';content: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button; cursor: pointer;
+    -webkit-border-radius:0
+}
+a {text-decoration:none}
+a:active, a:hover,a:focus,a:link,a:visited{text-decoration:none}
+input:not([type='radio']):not([type='checkbox']), textarea, select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance:none;
+    appearance: none;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+}
+/* IE10 이상에서 input box에 추가된 지우기 버튼 제거 */
+input:: -ms-clear { display:none;}
+/* input type number 에서 화살표 제거 */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-out-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance:none;
+    appearance:none;
+
+}
+/* select box 스타일 초기화 */
+select {
+    -webkit-appearance: none;
+    -moz-appearance:none;
+    appearance:none;}
+/* IE에서 Select box 화살표 제거 */
+select:: -ms-expand { display:none; }
+mark {background-color: transparent;font-weight: bold;color: inherit;}
+/* end reset */ 
+
+/* preset */
+body{font-size: 67.5%;font-family:'Noto Sans KR',sans-serif;color:#000;}
+
+
+.clearfix:before, .clearfix:after { content:""; display: table; clear: both; }
+.clearfix {clear: both; overflow: hidden;}
+/* SCROLL */
+::-webkit-scrollbar { width: 10px;height:10px; }
+/* 스크롤바의 width */
+::-webkit-scrollbar-track { background-color:#ffffff1a;}
+/* 스크롤바의 전체 배경색 */
+::-webkit-scrollbar-thumb { 
+    background: linear-gradient(to bottom,#29c88f,#13dc94); 
+}
+/* 스크롤바 색 */
+::-webkit-scrollbar-button { display: none; }
+/* 위 아래 버튼 (버튼 없애기를 함) */
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+input::-webkit-input-placeholder { opacity: 1; transition: all 0.5s; }
+input:focus::-webkit-input-placeholder { text-indent: -10px; opacity: 0; }
+
+/*display: flex;
+-webkit-justify-content: center;
+-webkit-flex-wrap: wrap;
+-ms-flex-wrap: wrap;
+-ms-flex-pack: center;  */
+
+
+/* -webkit-transform:scale(1.2); 
+-moz-transform:scale(1.2); 
+-ms-transform:scale(1.2);    
+-o-transform:scale(1.2); 
+transform:scale(1.2);  */
+/* 
+-webkit-transition:.3s; 
+-moz-transition:.3s; 
+-ms-transition:.3s; 
+-o-transition:.3s; 
+transition:.3s;  */
+
+/*  -moz-align-items: center;
+-webkit-align-items: center;
+-ms-align-items: center;
+align-items: center;
+
+display: -moz-flex;
+display: -webkit-flex;
+display: -ms-flex;
+display: flex;
+
+-moz-justify-content: center;
+-webkit-justify-content: center;
+-ms-justify-content: center;
+justify-content:center; */
+/*####################################################*/
