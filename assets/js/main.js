@@ -1,6 +1,3 @@
-// document.querySelector('.wrt-btnbox').onclick = function() {
-//     alert('hi');
-// }
 // el.addEventListener('eventType', function() {})
 const ul = document.querySelector("ul");
 const bbs = [
@@ -19,19 +16,34 @@ const bbs = [
   },
 ];
 
-// const writeButton = document.querySelector(".wrt-btnbox");
-// writeButton.addEventListener("click", function () {
-//   alert("hi");
-// });
-// document.querySelector()
+bbs.push({
+  bbsNo: "2",
+  bbsTitle: "제목테스트 2222222",
+  bbsDate: "2021-12-02",
+  bbsUser: "제시",
+});
+
+const bbs3 = {};
+bbs3.bbsNo = "3";
+bbs3.bbsTitle = "제목테스트 3333";
+bbs3.bbsDate = "2021-12-01";
+bbs3.bbsUser = "제시3333";
+
+bbs.push(bbs3);
+console.log(bbs);
 
 bbsAdd();
 
 function bbsAdd() {
+  // 삼항연산자<div class="num">${listAdd.bbsNo == '0' ? '<p>0</p>' : '<p>1</p>'}</div>
   bbs.map((listAdd) => {
     ul.innerHTML += `<li>
-              <div class="num">${listAdd.bbsNo}</div>
-              <div class="title"><a href="bbsview.html">${listAdd.bbsTitle}</a></div>
+              <div class="num">${
+                listAdd.bbsNo == "0" ? "<p>0</p>" : "<p>1</p>"
+              }</div>   
+              <div class="title"><a href="bbsview.html">${
+                listAdd.bbsTitle
+              }</a></div>
               <div class="date">${listAdd.bbsDate}</div>
               <div class="member">${listAdd.bbsUser}</div>    
            </li>`;
@@ -43,58 +55,22 @@ function bbsAdd() {
       alert("이벤트 테스트");
     });
   });
-
-  // const addRes = bbs.map(listA => listA);
-
-  // for (let i = 0; i < bbs.length; i++) {
-  //     ul.innerHTML += `<li>
-  //       <div class="num">${bbs[i].bbsNo}</div>
-  //       <div class="title"><a href="bbsview.html">${bbs[i].bbsTitle}</a></div>
-  //       <div class="date">${bbs[i].bbsDate}</div>
-  //       <div class="member">${bbs[i].bbsUser}</div>
-  //       </li>`;
-  //   }
 }
 
-// bbsa();
-// function bbsa() {
-// const listB = bbs.map((listA) => {
-//     console.log(listA);
-//   });
-// }
-// const listB = bbs.map(listA => listA);
-// const divnum = document.querySelector("div.num");
-// console.log(`${ listB[1].bbsNo } + test`);
-// if (`${listB[0].bbsNo}` == 0) {
-//    divnum.innerHTML += "<p>0이라서추가해봤어</p>";
-//  } else {
-//    divnum.innerHTML += "<p>0이아니야</p>";
-//  }
 const addRes = bbs.map((listA) => listA);
-console.log(addRes)
-// bbs.map((listA) => {
-// for (let i = 0; i < addRes.length; i++ ){
+console.log(addRes);
 
-const divnum = document.querySelector("div.num");
-// console.log(divnum);
-// console.log(listA.bbsNo + 'test');
-// console.log(`${listA.bbsNo} +'test'`);
-// console.log(`${listA.bbsNo}test`);
-// const addres1 = `${addRes[1].bbsNo}`;
-if (`${addRes[0].bbsNo}` == 0) {
-  divnum.innerHTML += "<p>0이라서추가해봤어</p>";
-} else if (`${addRes1}` !== 0) { 
-      divnum.innerHTML = "<p>0이아니야</p>";
+const divnum = document.querySelectorAll("div.num");
+
+for (let i = 0; i < addRes.length; i++) {
+  if (`${addRes[i].bbsNo}` == 0) {
+    divnum[i].innerHTML += "<p>0이라서추가해봤어</p>";
+  } else if (`${addRes[i].bbsNo}` !== 0) {
+    divnum[i].innerHTML = "<p>0이아니야</p>";
+  }
 }
+// addRes.forEach(v => )
 // });
-// }
-// function testFunc () {
-// }
-// const testFunc = () => {
-// }
 
-ul.addEventListener("click", function () {
-  alert("!");
-});
-
-ul.addEventListener("click", () => {});
+// ul.addEventListener("click", () => {
+// });
