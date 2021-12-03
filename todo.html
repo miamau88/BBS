@@ -21,28 +21,35 @@
       const input = document.querySelector("input");
       const btn = document.querySelector("button");
 
-      //console.log(input);
-      //   console.log(btn);
+      //  todos.splice(0,1)
+      //  todos.splice(0,2)
+
+    //   console.log(input);
+    //   console.log(btn);
       todoAdd();
-      function todoAdd(a) {
-        ul.innerHTML = `<li>${todos[0]}</li>
-               <li>${todos[1]}</li>`;
+      function todoAdd() {
+        todos.map((todoslist) => {
+          ul.innerHTML += `<li>${todoslist}</li>`;
+        });
       }
-    //   const inputRes = input.value;
-      
+
+      const inputRes = input.value;
       btn.addEventListener("click", () => {
         const push = todos.push(input.value);
         ul.innerHTML += `<li>${push}</li>`;
-         console.log(todos);
+        console.log(todos);
       });
-       const li = document.querySelectorAll("li");
-       for (let i = 0; i < li.length; i++) {
-         li[i].addEventListener("click", () => {
-           li[i].remove();          
-       console.log(li.length);
-         });
-       }
- 
+
+
+        // const li = document.querySelector("li");
+        // li.addEventListener("click", () => {
+        //   for (let i = 0; i < todos.length; i++) {
+        //     //todos.splice();
+        //     const spl = todos.splice(i, 1)
+        //     li.remove(todos[i]);
+        //     console.log(todos);
+        //   }
+        // });
     </script>
   </body>
 </html>
