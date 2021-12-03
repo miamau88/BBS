@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <button>add</button>
+    <ul></ul>
+    <script>
+      const todos = ["a", "b"];
+      ///console.log(todos);
+      //console.log(todos[0]);
+      // 1. todos배열로 리스트 만들기
+      // 2. input 에 값 입력 후 add 버튼 누르면 배열에도 값 추가, li도 추가
+      // 3. li클릭하면 배열에서도 삭제, li도 삭제
+      const ul = document.querySelector("ul");
+      const input = document.querySelector("input");
+      const btn = document.querySelector("button");
+
+      //console.log(input);
+      //   console.log(btn);
+      todoAdd();
+      function todoAdd(a) {
+        ul.innerHTML = `<li>${todos[0]}</li>
+               <li>${todos[1]}</li>`;
+      }
+      const inputRes = input.value;
+      
+      btn.addEventListener("click", () => {
+        const push = todos.push(inputRes);
+        ul.innerHTML += `<li>${push}</li>`;
+        // console.log(todos);
+      });
+      const li = document.querySelectorAll("li");
+      for (let i = 0; i < li.length; i++) {
+        li[i].addEventListener("click", () => {
+          li[i].remove();          
+          console.log(li.length);
+        });
+      }
+ 
+    </script>
+  </body>
+</html>

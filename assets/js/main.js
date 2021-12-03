@@ -23,14 +23,14 @@ bbs.push({
   bbsUser: "제시",
 });
 
-const bbs3 = {};
-bbs3.bbsNo = "3";
-bbs3.bbsTitle = "제목테스트 3333";
-bbs3.bbsDate = "2021-12-01";
-bbs3.bbsUser = "제시3333";
+// const bbs3 = {};
+// bbs3.bbsNo = "3";
+// bbs3.bbsTitle = "제목테스트 3333";
+// bbs3.bbsDate = "2021-12-01";
+// bbs3.bbsUser = "제시3333";
 
-bbs.push(bbs3);
-console.log(bbs);
+// bbs.push(bbs3);
+// console.log(bbs);
 
 bbsAdd();
 
