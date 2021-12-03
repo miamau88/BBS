@@ -28,20 +28,20 @@
         ul.innerHTML = `<li>${todos[0]}</li>
                <li>${todos[1]}</li>`;
       }
-      const inputRes = input.value;
+    //   const inputRes = input.value;
       
       btn.addEventListener("click", () => {
-        const push = todos.push(inputRes);
+        const push = todos.push(input.value);
         ul.innerHTML += `<li>${push}</li>`;
-        // console.log(todos);
+         console.log(todos);
       });
-      const li = document.querySelectorAll("li");
-      for (let i = 0; i < li.length; i++) {
-        li[i].addEventListener("click", () => {
-          li[i].remove();          
-          console.log(li.length);
-        });
-      }
+       const li = document.querySelectorAll("li");
+       for (let i = 0; i < li.length; i++) {
+         li[i].addEventListener("click", () => {
+           li[i].remove();          
+       console.log(li.length);
+         });
+       }
  
     </script>
   </body>
