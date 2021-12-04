@@ -22,36 +22,38 @@
       const btn = document.querySelector("button");
 
       todoAdd();
+      reCount();
       function todoAdd() {
         todos.map((todoslist) => {
-          ul.innerHTML += `<li>${todoslist}</li>`;      
+          ul.innerHTML += `<li>${todoslist}</li>`;
         });
-      
       }
-      const li = document.querySelectorAll("ul li");
+
       btn.addEventListener("click", () => {
         todos.push(input.value);
+        console.log(todos);
         ul.innerHTML += `<li>${input.value}</li>`;
-        for(let i=0; i < todos.length; i++)
-        {
-        btn.innerText = 'ADD' + i + '번째 추가'
-        }    
-        
+        for (let i = 0; i < todos.length; i++) {
+          btn.innerText = "ADD" + i + "번째 추가";
+        }
+        reCount();
+
         //  alert(btn.innerText)
-        
       });
-   
 
-      // liList.addEventListener("click", () => {
-
-      //   alert("h");
-      //   //    for (let i = 0; i < todos.length; i++) {
-      //   // todos.splice();
-      //   //  const spl = todos.splice(i, 1)
-      //   //      li.remove(todos[i]);
-      //   //      console.log(todos);
-      //   //  }
-      // });
+      function reCount() {
+        const li = document.querySelectorAll("li");
+        for (let i = 0; i < li.length; i++) {
+          li[i].addEventListener("click", () => {
+            todos.splice(i, 1);
+            li[i].remove();
+            console.log(todos);
+            console.log(li[i]);
+            alert('li 인덱스 : ' + i);
+          });
+          console.log(li[i]);
+        }
+      }
     </script>
   </body>
 </html>
