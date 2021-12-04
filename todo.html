@@ -21,35 +21,37 @@
       const input = document.querySelector("input");
       const btn = document.querySelector("button");
 
-      //  todos.splice(0,1)
-      //  todos.splice(0,2)
-
-    //   console.log(input);
-    //   console.log(btn);
       todoAdd();
       function todoAdd() {
         todos.map((todoslist) => {
-          ul.innerHTML += `<li>${todoslist}</li>`;
+          ul.innerHTML += `<li>${todoslist}</li>`;      
         });
+      
       }
-
-      const inputRes = input.value;
+      const li = document.querySelectorAll("ul li");
       btn.addEventListener("click", () => {
-        const push = todos.push(input.value);
-        ul.innerHTML += `<li>${push}</li>`;
-        console.log(todos);
+        todos.push(input.value);
+        ul.innerHTML += `<li>${input.value}</li>`;
+        for(let i=0; i < todos.length; i++)
+        {
+        btn.innerText = 'ADD' + i + '번째 추가'
+        }    
+        
+        //  alert(btn.innerText)
+        
       });
+   
 
+      // liList.addEventListener("click", () => {
 
-        // const li = document.querySelector("li");
-        // li.addEventListener("click", () => {
-        //   for (let i = 0; i < todos.length; i++) {
-        //     //todos.splice();
-        //     const spl = todos.splice(i, 1)
-        //     li.remove(todos[i]);
-        //     console.log(todos);
-        //   }
-        // });
+      //   alert("h");
+      //   //    for (let i = 0; i < todos.length; i++) {
+      //   // todos.splice();
+      //   //  const spl = todos.splice(i, 1)
+      //   //      li.remove(todos[i]);
+      //   //      console.log(todos);
+      //   //  }
+      // });
     </script>
   </body>
 </html>
