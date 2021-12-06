@@ -4,44 +4,61 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/reset.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="./assets/js/main.js" defer></script>  
+    <link rel="stylesheet" href="assets/css/reset.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="./assets/js/main.js" defer></script>
     <title>BBS LIST</title>
   </head>
+  <script>
 
+  </script>
   <body>
-  <div class="container bbs-list">
-    <div class="bbs-con">
-      <div class="titlebox">FREE BOARD</div>
-      <div class="boardlist">
-        <ul>
-          <!-- <li>
-             <div class="num">1</div>1111
-            <div class="title">
-              <a href="/bbsview.html">게시판 제목 1 게시판 제목 1 게시판 제목 1 게시판 제목 1</a>
-            </div>
-            <div class="date">2021-11-27</div>
-            <div class="member">제시</div>
-          </li>
-          <li>
-          
-            <div class="num">2</div>
-            <div class="title">
-              <a href="/bbsview.html">게시판 제목 2 게시판 제목 2 게시판 제목 2 게시판 제목 2</a>
-            </div>
-            <div class="date">2021-11-27</div>
-            <div class="member">제시</div> 
-          </li> -->
-        </ul>
+    <div class="container bbs-list">
+      <div class="bbs-con">
+        <div class="titlebox">FREE BOARD</div>
+        <div class="boardlist">
+          <ul>
+            <!-- list  -->
+          </ul>
+        </div>
       </div>
-    </div>  <!-- bbs-con end -->
-    <div class="wrt-btnbox"><!-- <a href="bbswrite.html">글등록</a> -->ddd</div> 
-  </div> <!-- container end  -->
-  <div class="modal">
-    <input type="text" value="title1111" />
-    <p>abcdddddd</p>
-  </div>
-  
+      <!-- bbs-con end -->
+      <div class="wrt-btnbox">
+        <a class="modalOpen">글등록</a> 
+      </div>
+    </div>
+    <!-- container end  -->
+    <div class="modal">
+      <div class="container bbs-write">
+        <div class="bbs-con">
+          <div class="titlebox">FREE BOARD</div>
+          <div class="boardlist">
+            <ul>
+              <li>
+                <div class="num">3</div>
+                <div class="title">
+                  <a><input type="text" value="" placeholder="제목입력" /></a>
+                </div>
+                <div class="date">2021-11-27</div>
+                <div class="member">제시</div>
+              </li>
+            </ul>
+          </div>
+          <!-- bboardlist end  -->
+          <div class="bbsview-infoarea">
+            <div>
+              <textarea name="" id=""> </textarea>
+            </div>
+          </div>
+          <!-- bbsview-infoarea -->
+        </div>
+        <!-- bbs-con end -->
+        <div class="wrt-btnbox"><a class="modal-closeX">닫기</a></div>
+        <div class="wrt-btnbox"><a>글등록</a></div>
+        <!-- <div class="wrt-btnbox"><a href="bbsmodi.html">수정</a></div>  -->
+      </div>
+      <!-- container end  -->
+    </div>
   </body>
+
 </html>

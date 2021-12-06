@@ -41,9 +41,7 @@ function bbsAdd() {
               <div class="num">${
                 listAdd.bbsNo == "0" ? "<p>0</p>" : "<p>1</p>"
               }</div>   
-              <div class="title"><a href="bbsview.html">${
-                listAdd.bbsTitle
-              }</a></div>
+              <div class="title"><a>${listAdd.bbsTitle}</a></div>
               <div class="date">${listAdd.bbsDate}</div>
               <div class="member">${listAdd.bbsUser}</div>    
            </li>`;
@@ -51,9 +49,9 @@ function bbsAdd() {
     console.log(listAdd.bbsDate + "hi" + listAdd.bbsNo);
     const li = document.querySelector("li");
 
-    li.addEventListener("click", () => {
-      alert("이벤트 테스트");
-    });
+    // li.addEventListener("click", () => {
+    //   alert("이벤트 테스트");
+    // });
   });
 }
 
@@ -69,6 +67,19 @@ for (let i = 0; i < addRes.length; i++) {
     divnum[i].innerHTML = "<p>0이아니야</p>";
   }
 }
+
+const modal = document.querySelector(".modal");
+const btnOpenPopup = document.querySelector(".modalOpen");
+const modalClose = document.querySelector(".modal-closeX");
+btnOpenPopup.addEventListener("click", () => {
+  modal.style.display = "block";
+});
+modalClose.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+
+
 // addRes.forEach(v => )
 // });
 

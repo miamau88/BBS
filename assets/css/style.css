@@ -2,6 +2,17 @@
   width: 100%;
   max-width: 900px;
   margin: 150px auto;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 600px;
+  padding: 20px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  transform: translateX(-50%) translateY(-50%); */
 }
 .bbs-con {
   width: 100%;
@@ -31,15 +42,14 @@
   padding: 0 20px;
   font-size: 1rem;
   text-align: center;
-  flex:1;
-  
+  flex: 1;
 }
 .boardlist ul li > div.title {
   /* width: calc(100% - 450px); */
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  flex:1.5;
+  flex: 1.5;
 }
 .wrt-btnbox {
   float: right;
@@ -90,6 +100,21 @@
 }
 .bbs-write .wrt-btnbox:nth-of-type(2) {
   background: orange;
+}
+.wrt-btnbox > a {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.4);  
 }
 
 @media (max-width: 768px) {
