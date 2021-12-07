@@ -37,10 +37,8 @@ bbsAdd();
 function bbsAdd() {
   // 삼항연산자<div class="num">${listAdd.bbsNo == '0' ? '<p>0</p>' : '<p>1</p>'}</div>
   bbs.map((listAdd) => {
-    ul.innerHTML += `<li>
-              <div class="num">${
-                listAdd.bbsNo == "0" ? "<p>0</p>" : "<p>1</p>"
-              }</div>   
+    ul.innerHTML += `<li>                
+              <div class="title"><a>${listAdd.bbsNo}</a></div>
               <div class="title"><a>${listAdd.bbsTitle}</a></div>
               <div class="date">${listAdd.bbsDate}</div>
               <div class="member">${listAdd.bbsUser}</div>    
@@ -54,19 +52,21 @@ function bbsAdd() {
     // });
   });
 }
-
+// `li<div class="num">${
+//   listAdd.bbsNo == "0" ? "<p>0</p>" : "<p>1</p>"
+// }</div>
 const addRes = bbs.map((listA) => listA);
 console.log(addRes);
 
-const divnum = document.querySelectorAll("div.num");
+// const divnum = document.querySelectorAll("div.num");
 
-for (let i = 0; i < addRes.length; i++) {
-  if (`${addRes[i].bbsNo}` == 0) {
-    divnum[i].innerHTML += "<p>0이라서추가해봤어</p>";
-  } else if (`${addRes[i].bbsNo}` !== 0) {
-    divnum[i].innerHTML = "<p>0이아니야</p>";
-  }
-}
+// for (let i = 0; i < addRes.length; i++) {
+//   if (`${addRes[i].bbsNo}` == 0) {
+//     divnum[i].innerHTML += "<p>0이라서추가해봤어</p>";
+//   } else if (`${addRes[i].bbsNo}` !== 0) {
+//     divnum[i].innerHTML = "<p>0이아니야</p>";
+//   }
+// }
 
 const modal = document.querySelector(".modal");
 const btnOpenPopup = document.querySelector(".modalOpen");
@@ -77,8 +77,6 @@ btnOpenPopup.addEventListener("click", () => {
 modalClose.addEventListener("click", () => {
   modal.style.display = "none";
 });
-
-
 
 // addRes.forEach(v => )
 // });
