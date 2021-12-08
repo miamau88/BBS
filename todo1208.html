@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <button class="add">add</button>
+    <ul></ul>
+    <script>
+      // 1. 리스트 출력되도록 코드 수정
+      // 2. 삭제 버튼 클릭하면 배열에서 삭제, 목록에서도 제거
+      // 3. add 버튼 누르면 항목 추가 (id 1씩 증가)
+      const todos = [
+        {
+          id: "1",
+          title: "a제목입니다",
+          completed: 0,
+        },
+        {
+          id: "2",
+          title: "b제목입니다",
+          completed: 0,
+        },
+      ];
+      list();
+      function list() {
+        const ul = document.querySelector("ul");
+        const li = document.querySelector("li");
+        const todomap = (todoslist) =>
+          `<li>${todoslist.id}&nbsp;&nbsp
+          ${todoslist.title}&nbsp;&nbsp;
+          ${todoslist.completed}&nbsp;&nbsp;
+          <button class="btndel">삭제</button></li>`;
+        ul.innerHTML = todos.map(todomap).join("");
+        // const btn = document.querySelector('button');
+        //  const input = document.querySelector('input');
+        const btndel = document.querySelectorAll(".btndel");
+        for (let i = 0; i < btndel.length; i++) {
+          btndel[i].addEventListener("click", (e) => {
+            todos.splice(i, 1);
+            e.target.parentNode.remove();
+            console.log(todos);
+          });
+        }
+      }
+      document.querySelector("body").addEventListener("click", (e) => {
+        if (e.target.className == "add") {
+          const b = todos.push({
+            id: Number(todos[todos.length - 1].id) + 1,
+            title: "제목입니다",
+            completed: 0,
+          });
+
+          // console.log(todos);
+          list();
+        }
+        // console.log(Number(todos[todos.length-1].id));
+        // console.log(todos[todos.length-1].id);
+      });
+    </script>
+  </body>
+</html>
