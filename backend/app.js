@@ -16,54 +16,52 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-
-
-
-
-
-
-
-
-
 app.get("/bbs", (req, res) => {
-    // connection.connect();
-    connection.query("SELECT * from study.bbs", function (err, rows, fields) {
+  // connection.connect();
+  connection.query("SELECT * from study.bbs", function (err, rows, fields) {
+    if (err) throw err;
+    res.send(rows);
+    console.log(rows);
+  });
+});
+
+app.delete("/bbs", (req, res) => {
+  // connection.connect();
+  const id = req.body.no; // 속서명 적어줘야됨
+  connection.query(
+    `delete from study.bbs where no=?`,
+    [id],
+    function (err, rows, fields) {
       if (err) throw err;
       res.send(rows);
+      // console.log(rows);
+    }
+  );
+});
+
+app.post("/bbs", (req, res) => {
+  console.log("post");
+  const { title, member, msg } = req.body;
+  console.log(req.body);
+  // connection.connect();
+  connection.query(
+    // `insert into study.bbs (no,title,regdate,member) value(?,?,?,?)`,[no,title,date,member],
+    `insert into study.bbs (title,member,msg) value(?,?,?)`,
+    [title, member, msg],
+    function (err, rows, fields) {
+      if (err) throw err;      
       console.log(rows);
-    });
-  });
-  
-  app.delete("/bbs", (req, res) => {
-    // connection.connect();    
-      const id = req.body.no;    // 속서명 적어줘야됨 
       connection.query(
-        `delete from study.bbs where no=?`,
-        [id],
+        `select * from study.bbs order by no desc limit 1 `,
         function (err, rows, fields) {
           if (err) throw err;
           res.send(rows);
-          // console.log(rows);
+          console.log(rows);
         }
       );
-    });
-    
-    app.post("/bbs", (req, res) => {
-      console.log('post')
-      const {no,title,date,member} = req.body
-      console.log(req.body)
-      // connection.connect();          
-      connection.query(
-          // `insert into study.bbs (no,title,regdate,member) value(?,?,?,?)`,[no,title,date,member],
-          `insert into study.bbs (no,title,regdate,member) value('111','2323','0','test입니다')`,
-          function (err, rows, fields) {
-            if (err) throw err;
-            res.send(rows);
-            console.log(rows);
-          }
-      );
-    });
-    app.listen(port, () => {
-        console.log(`Example app listening at http://localhost:${port}`);
-      });
-      
+    }
+  );
+});
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});

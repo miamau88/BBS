@@ -43,14 +43,15 @@
   font-size: 1rem;
   text-align: center;
   flex: 1;
+  flex-basis:auto;
 }
 .boardlist ul li > div.title {
   /* width: calc(100% - 450px); */
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow: hidden;
-  flex: 1.5;
+  overflow: hidden;  
 }
+.boardlist ul li > div.memeber{text-align:left !important;}
 .wrt-btnbox {
   float: right;
   height: 30px;
