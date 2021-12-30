@@ -16,70 +16,91 @@ const bbs = [
   },
 ];
 
-bbs.push({
-  bbsNo: "2",
-  bbsTitle: "제목테스트 2222222",
-  bbsDate: "2021-12-02",
-  bbsUser: "제시",
-});
-
-// const bbs3 = {};
-// bbs3.bbsNo = "3";
-// bbs3.bbsTitle = "제목테스트 3333";
-// bbs3.bbsDate = "2021-12-01";
-// bbs3.bbsUser = "제시3333";
-
-// bbs.push(bbs3);
-// console.log(bbs);
+// bbs.push({
+//   bbsNo: "2",
+//   bbsTitle: "제목테스트 2222222",
+//   bbsDate: "2021-12-02",
+//   bbsUser: "제시",
+// });
 
 bbsAdd();
-
+btndel();
+// ul.innerHTML = todos.map((todoslist) => `<li>${todoslist}</li>`).join("");
 function bbsAdd() {
   // 삼항연산자<div class="num">${listAdd.bbsNo == '0' ? '<p>0</p>' : '<p>1</p>'}</div>
-  bbs.map((listAdd) => {
-    ul.innerHTML += `<li>                
+  ul.innerHTML = bbs
+    .map((listAdd) => {
+       console.log(listAdd);
+      return `<li>                
               <div class="title"><a>${listAdd.bbsNo}</a></div>
               <div class="title"><a>${listAdd.bbsTitle}</a></div>
               <div class="date">${listAdd.bbsDate}</div>
-              <div class="member">${listAdd.bbsUser}</div>    
+              <div class="member">${listAdd.bbsUser}
+              <button class="btnDel">삭제</button>
+              </div>    
            </li>`;
-    console.log(`${listAdd.bbsNo}리스트${listAdd.bbsNo}`);
-    console.log(listAdd.bbsDate + "hi" + listAdd.bbsNo);
-    const li = document.querySelector("li");
+       
+           
+    })
+    .join("");
 
-    // li.addEventListener("click", () => {
-    //   alert("이벤트 테스트");
-    // });
-  });
+  
+
+  // li.addEventListener("click", () => {
+  //   alert("이벤트 테스트");
+  // });
+  
 }
-// `li<div class="num">${
-//   listAdd.bbsNo == "0" ? "<p>0</p>" : "<p>1</p>"
-// }</div>
-const addRes = bbs.map((listA) => listA);
-console.log(addRes);
-
-// const divnum = document.querySelectorAll("div.num");
-
-// for (let i = 0; i < addRes.length; i++) {
-//   if (`${addRes[i].bbsNo}` == 0) {
-//     divnum[i].innerHTML += "<p>0이라서추가해봤어</p>";
-//   } else if (`${addRes[i].bbsNo}` !== 0) {
-//     divnum[i].innerHTML = "<p>0이아니야</p>";
-//   }
-// }
 
 const modal = document.querySelector(".modal");
 const btnOpenPopup = document.querySelector(".modalOpen");
 const modalClose = document.querySelector(".modal-closeX");
-btnOpenPopup.addEventListener("click", () => {
+function block() {
   modal.style.display = "block";
-});
-modalClose.addEventListener("click", () => {
+}
+function none() {
   modal.style.display = "none";
+}
+btnOpenPopup.addEventListener("click", block);
+modalClose.addEventListener("click", none);
+
+// modalClose.addEventListener("click", none); // 콜백함수
+const writeSucClose = document.querySelector(".write-close");
+const input = document.querySelector("input");
+
+// let a = 2;
+writeSucClose.addEventListener("click", () => {
+  // 배열 마지막 요소의  no에 + 1
+  bbs.push({
+    bbsNo: Number(bbs[bbs.length - 1].bbsNo) + 1,
+    bbsTitle: input.value,
+    bbsDate: "2021-12-07",
+    bbsUser: "제시2222",
+  });
+
+  bbsAdd();
+  btndel()
+  
+  // console.log(bbs);
+  none();
 });
+
+function btndel() {
+  const btnDel = document.querySelectorAll(".btnDel");  
+  for (let i = 0; i < btnDel.length; i++) {
+    btnDel[i].addEventListener("click", (e) => {
+    // console.log(e.target.parentNode.parentNode)
+      bbs.splice(i, 1);
+      e.target.parentNode.parentNode.remove();
+      console.log(bbs);
+    });
+  }
+}
+
+// fetch
+// promise
+// callback
+
 
 // addRes.forEach(v => )
-// });
-
-// ul.addEventListener("click", () => {
 // });
