@@ -1,3 +1,4 @@
+
 let bbs = [];
 fetch("http://localhost:5000/bbs")
   .then((res) => res.json())
@@ -80,7 +81,15 @@ function modiFunc() {
       txtarea.innerText = res.msg;
     });
   }
+  function reload() {
+    (location || window.location || document.location).reload();
+  }
 
+  function delay(ms) {
+    return setTimeout(() => {
+      reload()      
+    }, ms);    
+  }
   modiBtn.addEventListener("click", () => {
     fetch(`http://localhost:5000/bbs`, {
       method: "PATCH",
@@ -92,7 +101,8 @@ function modiFunc() {
       }),
     })
       .then((res) => res.json())
-      .then((res) => modalCloseNone())
+      // .then((res) => modalCloseNone(), setTimeout(() => { location.reload() },500))
+      .then((res) => modalCloseNone(),delay(50))
       .catch((err) => alert(err));
   });
 }
@@ -119,7 +129,7 @@ function modalCloseNone() {
   modal.style.display = "none";
 }
 btnOpenPopup.addEventListener("click", () => {
-  modalOpen("add");  
+  modalOpen("add");
   title.value = "";
   txtarea.value = "";
   num.innerText = "";
@@ -158,6 +168,7 @@ writeBtn.addEventListener("click", () => {
       });
       list();
       modiFunc();
+      delFunc();
       modalCloseNone();
     })
     .catch((err) => alert(err));

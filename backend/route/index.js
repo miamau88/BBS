@@ -9,10 +9,11 @@ const {getList,delBody,postInsert,modiPatch} = require("./bbsCtrl.js")
 //         res.send('success')
 //     })
 // })
-route.get("/",getList);
-route.delete("/",delBody);
-route.post("/",postInsert);
-route.patch("/",modiPatch)
+
+route.get("/bbs",getList);
+route.delete("/bbs",delBody);
+route.post("/bbs",postInsert);
+route.patch("/bbs",modiPatch)
 // put: 모든 데이터 수정, patch : 부분적으로 수정
 
 module.exports = route;

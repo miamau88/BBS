@@ -2,12 +2,20 @@ const express = require("express");
 const cors = require("cors");
 const route = require("./route");
 const path = require('path');
+const moment = require('moment');
+require('moment-timezone');
+moment.tz.setDefault("Asia/Seoul");
+const date = moment().format('YYYY-MM-DD HH:mm:ss');
+console.log(date);
+
+exports.moment = moment;
+
 
 // const loginRoute = require("./routelogin");
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/bbs",route)
+app.use("/",route)
 
 app.use(express.static(path.join(__dirname, 'public'))) // 정적 파일 제공
 
