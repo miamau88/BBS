@@ -1,14 +1,13 @@
-const db = require("../db.inc")
+const db = require("./../../db.inc")
 is_Object = function(a) {
-  return (!!a) && (a.constructor === Object);
-};
+  return (!!a) && (a.constructor === Object);};
 
 
 //-- select * from 메인 테이블 left join 테이블명 on 메인테이블.컬럼 = 테이블.컬럼
 
 
 
-const getList = (req, res) => {
+exports.getList = (req, res) => {
     // db.connect();
     db.query("SELECT no,title,regdate,msg,name As member FROM bbs left join user On bbs.member = user.idx", function (err, rows, fields) {
       if (err) throw err;
@@ -17,7 +16,7 @@ const getList = (req, res) => {
     });
   }
    
-  const delBody = (req, res) => {
+  exports.delBody = (req, res) => {
     // db.connect();
     const id = req.body.no; // 속서명 적어줘야됨
     db.query(
@@ -31,7 +30,7 @@ const getList = (req, res) => {
     );    
   } 
   
-  const postInsert = (req, res) => {
+  exports.postInsert = (req, res) => {
     console.log("post");
     const { title, member, msg } = req.body;
     
@@ -56,7 +55,7 @@ const getList = (req, res) => {
   
   
   // exports.함수명으로도 내보내기 가능 
-  const modiPatch = (req, res) => {    
+  exports.modiPatch = (req, res) => {    
     is_Object(req)     
     console.log(is_Object)    
       const { no, title, msg } = req.body;    
@@ -72,4 +71,4 @@ const getList = (req, res) => {
     
   }
   
-  module.exports = {getList,delBody,postInsert,modiPatch}
+  
