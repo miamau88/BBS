@@ -15,7 +15,8 @@
     "express": "^4.17.2",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.34",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "node-cron": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
