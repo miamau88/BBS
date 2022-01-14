@@ -42,7 +42,7 @@ exports.signUp = (req, res) => {
       console.log("있음");
       res.send({ status: "failId" });
     } else {      
-      const query = `insert into study.user (id,pw,name) value(?,?,?)`;
+      const query = `insert into user (id,pw,name) value(?,?,?)`;
       const param = [userId, userPw, name];
       db.query(query, param, function (err, rows, fields) {
         if (err) throw err;

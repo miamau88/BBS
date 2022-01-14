@@ -45,8 +45,13 @@ async function signCheck(data) {
 }
 async function idchk() {
   const idchk = document.querySelector("#idCheck");
+  const userId = document.querySelector("#userId");
   idchk.addEventListener("click", () => {
+    if (userId.value == "") {
+      alert("아이디를 입력하세요")
+    }else{
     AxiosIdChk();
+  }
   });
 }
 async function AxiosIdChk() {
