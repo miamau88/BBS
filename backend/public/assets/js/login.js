@@ -26,7 +26,7 @@ async function loginCheck() {
     const res = fetchRes.data
     if (res.status == "success") {
       alert("성공");
-      location.href = "/bbsList.html";
+      location.href = "/bbsList";
     } else {
       alert("fail");
     }

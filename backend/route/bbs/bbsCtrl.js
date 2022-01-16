@@ -21,7 +21,7 @@ exports.delBody = (req, res) => {
   // db.connect();
   const id = req.body.no; // 속서명 적어줘야됨
   db.query(
-    `delete from study.bbs where no=?`,
+    `delete from bbs where no=?`,
     [id],
     function (err, rows, fields) {
       if (err) throw err;
@@ -38,13 +38,13 @@ exports.postInsert = (req, res) => {
   console.log(req.body);
   // db.connect();
   db.query(
-    `insert into study.bbs (title,member,msg) value(?,?,?)`,
+    `insert into bbs (title,member,msg) value(?,?,?)`,
     [title, member, msg],
     function (err, rows, fields) {
       if (err) throw err;
       // console.log(rows);
       db.query(
-        `select * from study.bbs order by no desc limit 1 `,
+        `SELECT no,title,regdate,msg,name as member FROM bbs join user on bbs.member = user.idx order by no desc limit 1`,
         function (err, rows, fields) {
           if (err) throw err;
           // console.log(rows[0]);
@@ -63,7 +63,7 @@ exports.modiPatch = (req, res) => {
   console.log(req.body);
 
   try {
-    const query = `update study.bbs set title=?,msg=? where no=? `;
+    const query = `update bbs set title=?,msg=? where no=? `;
     const param = [title, msg, no];
     // `insert into study.bbs (no,title,regdate,member) value(?,?,?,?)`,[no,title,date,member],
     db.query(query, param, (err, rows) => {

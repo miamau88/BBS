@@ -27,33 +27,30 @@ console.log(date);
 
 // const connectSessionDB = mysql.createPool(option);
 // const sessionStore = new MysqlStore(connectSessionDB)
-// app.use(
-//   session({
-//     key: "session_cookie_name",
-//     secret: "session_cookie_secret",
-//     store: sessionStore,
-//     resave: true,
-//     saveUninitialized: false,
-//   })
-//   );
 
-// const http = require("http");
-// const fs = require("fs");
-// http.globalAgent.keepAlive = true;
-// const cron = require('node-cron');
-// exports.moment = moment;
+    // const http = require("http");
+    // const fs = require("fs");
+    // http.globalAgent.keepAlive = true;
+    // const cron = require('node-cron');
+    // exports.moment = moment;
+    
+    // const loginRoute = require("./routelogin");
+    const app = express();    
+    app.set('view engine', 'ejs')
+    app.use(cors());
+    app.use(session({
+      secret: 'keyboard cat',
+      resave: false,
+      saveUninitialized: true,
+      cookie: { secure: true }
+    }))
+    app.use(express.json());
+    app.use("/", bbsRoute);
+    app.use("/", loginRoute);
+    
+    //app.use("/login",route)
+    app.use(express.static(path.join(__dirname, "public"))); // 정적 파일 제공
 
-// const loginRoute = require("./routelogin");
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-app.use("/", bbsRoute);
-app.use("/", loginRoute);
-//app.use("/login",route)
-app.use(express.static(path.join(__dirname, "public"))); // 정적 파일 제공
-
-//  app.get('/login',(req ,res) =>{
 //   res.sendFile(path.join(__dirname, 'public/index.html'))
 //    })
 

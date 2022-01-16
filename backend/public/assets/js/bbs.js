@@ -143,7 +143,8 @@ const input = document.querySelector("input");
 
 writeBtn.addEventListener("click", () => {
   // let no = bbs.length !== 0 ? Number(bbs[bbs.length - 1].no) + 1 : 1
-  const member = "test41231312";
+  const body = document.querySelector('body')
+  const member = body.dataset.id;
   const txtarea = document.querySelector("#modi-txtarea");
 
   // 배열 마지막 요소의  no에 + 1
