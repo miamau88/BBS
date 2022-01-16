@@ -4,25 +4,55 @@ const bbsRoute = require("./route/bbs");
 const loginRoute = require("./route/login");
 const path = require("path");
 const moment = require("moment"); //설치한거
+const mysql = require("mysql2");
+const session = require("express-session");
+const MysqlStore = require("express-mysql-session")(session);
+const ejs = require('ejs');
 require("moment-timezone");
 moment.tz.setDefault("Asia/Seoul");
 const date = moment().format("YYYY-MM-DD HH:mm:ss");
 console.log(date);
+
+// const option = {
+//   host: "localhost",
+//   user: "root",
+//   password: "root",
+//   dateStrings: "date",
+//   database: "study",
+//   // connectionLimit: 5,
+//   // waitForConnections: true,
+//   // queueLimit: 0
+// }
+
+
+// const connectSessionDB = mysql.createPool(option);
+// const sessionStore = new MysqlStore(connectSessionDB)
+// app.use(
+//   session({
+//     key: "session_cookie_name",
+//     secret: "session_cookie_secret",
+//     store: sessionStore,
+//     resave: true,
+//     saveUninitialized: false,
+//   })
+//   );
+
 // const http = require("http");
 // const fs = require("fs");
-// const db = require("./db.inc");
 // http.globalAgent.keepAlive = true;
 // const cron = require('node-cron');
 // exports.moment = moment;
 
 // const loginRoute = require("./routelogin");
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 app.use("/", bbsRoute);
 app.use("/", loginRoute);
 //app.use("/login",route)
 app.use(express.static(path.join(__dirname, "public"))); // 정적 파일 제공
+
 //  app.get('/login',(req ,res) =>{
 //   res.sendFile(path.join(__dirname, 'public/index.html'))
 //    })
@@ -32,6 +62,7 @@ app.use(express.static(path.join(__dirname, "public"))); // 정적 파일 제공
 // })
 // 'C:\GitHub\BBS\backend\public'
 // console.log(__dirname)
+
 
 
 
