@@ -108,7 +108,7 @@
   width: 100%;
 }
 
-.modal {
+.modal,.modal2 {
   position: absolute;
   top: 0;
   left: 0;
@@ -150,3 +150,4 @@
     flex: 0.6;
   }
 }
+.readonly{background: rgb(168, 168, 168) !important}

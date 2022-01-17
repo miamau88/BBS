@@ -8,6 +8,7 @@ const mysql = require("mysql2");
 const session = require("express-session");
 const MysqlStore = require("express-mysql-session")(session);
 const ejs = require('ejs');
+const axios = require('axios');
 require("moment-timezone");
 moment.tz.setDefault("Asia/Seoul");
 const date = moment().format("YYYY-MM-DD HH:mm:ss");
@@ -35,6 +36,37 @@ console.log(date);
     // exports.moment = moment;
     
     // const loginRoute = require("./routelogin");
+    
+    
+    
+    // const a = async() => {
+    //   try {
+    //     const getUrl = await axios.get("https://jsonplaceholder.typicode.com/posts/1")   
+    //     return getUrl.data.title
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+      
+    // };
+    // // a()
+    // const b = async () => {       
+    //   const res = await a();                             
+ 
+    //   await new Promise((resolve, reject) => {             
+    //     setTimeout(() => {                          
+    //       resolve(console.log('hello 5초뒤'))
+    //     },5000)
+    //   })
+    //   console.log(res)  
+    //   // 결과는 hello 5초뒤 , 요청한 타이틀값 순서로 출력
+    // };
+    // b()
+    
+    
+    
+    
+    
+    
     const app = express();    
     app.set('view engine', 'ejs')
     app.use(cors());
@@ -42,7 +74,6 @@ console.log(date);
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: true,
-      cookie: { secure: true }
     }))
     app.use(express.json());
     app.use("/", bbsRoute);

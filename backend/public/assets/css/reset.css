@@ -105,6 +105,10 @@ body{font-size: 67.5%;font-family:'Noto Sans KR',sans-serif;color:#000;}
 }
 input::-webkit-input-placeholder { opacity: 1; transition: all 0.5s; }
 input:focus::-webkit-input-placeholder { text-indent: -10px; opacity: 0; }
+input:read-only, textarea:read-only {
+    background-color: rgb(168, 168, 168) !important;
+  }
+  
 
 /*display: flex;
 -webkit-justify-content: center;

@@ -13,12 +13,7 @@ const view = {
   signUp: (req, res) => {
     res.render("signUp.ejs");
   },
-  bbsList : (req,res) =>{
-    console.log(req.session.userid)
-    const id = 1
-    res.render("bbsList.ejs", { id : id })
-  
-  }
+
 };
 
 const process = {
@@ -38,7 +33,7 @@ const process = {
       if (rows.length < 1) {
         res.send({ status: "fail" });
       } else {
-        req.session.userid = rows[0].id
+        req.session.userid = rows[0].idx
         res.send({ status: "success" });
       }
     } catch (err) {

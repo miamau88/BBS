@@ -7,7 +7,7 @@ route.post("/idCheck",process.idCheck)
 
 route.get("/",view.login)
 route.get("/signUp",view.signUp)
-route.get("/bbsList",view.bbsList)
+
 
 
 
