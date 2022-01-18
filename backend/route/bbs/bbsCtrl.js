@@ -15,7 +15,8 @@ const process = {
   getList: async (req, res) => {
     try {
       const conn = await mysql.createConnection(db);
-      const param = [req.session.userid]
+      // const param = [req.session.userid]
+      const param = 1
       const query =
         "SELECT no,title,regdate,msg,name As member FROM bbs left join user On bbs.member = user.idx where user.idx=?";
       const [rows] = await conn.query(query,param);
