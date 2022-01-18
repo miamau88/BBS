@@ -8,19 +8,28 @@ const modiBtn = document.querySelector(".modal .modiBtn");
 const modal = document.querySelector(".modal");
 const btnOpenPopup = document.querySelector(".modalOpen");
 const modalClose = document.querySelector(".modal-closeX");
+const wrtBtn = document.querySelector(".wrtbtn");
+const modiBtnBox = document.querySelector(".modiBtnBox");
 function modalOpen(type) {
+    // debugger
   modal.style.display = "block";
   if (type == "edit") {
-    const wrtBtn = document.querySelector(".wrtbtn");
-    wrtBtn.style.display = "none";
-    const modiBtn = document.querySelector(".modiBtnBox");
-    modiBtn.style.display = "block";
+    wrtBtn.style.display = "none";    
+    modiBtnBox.style.display = "block";    
+    $title.readOnly = false;
+    $txtarea.readOnly = false;    
   }
   if (type == "add") {
-    const modiBtn = document.querySelector(".modiBtnBox");
-    modiBtn.style.display = "none";
-    const wrtBtn = document.querySelector(".wrtbtn");
+    
+    modiBtnBox.style.display = "none";    
     wrtBtn.style.display = "block";
+  }
+  if(type == "view"){
+    $title.readOnly = true;
+    $txtarea.readOnly = true;    
+    wrtBtn.style.display = "none"
+    modiBtnBox.style.display = "block";    
+    
   }
 }
 function modalCloseNone() {
