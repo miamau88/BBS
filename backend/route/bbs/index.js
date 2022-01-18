@@ -1,6 +1,8 @@
 const express = require("express"); //이거
 const route = express.Router(); // 이거 두개는 꼭 필요함
 const {view,process} = require("./bbsCtrl")
+const { isLogin } = require("../middleware.js")
+
 
 // route.post('/login', (req) => {
 //     const {id, password} = req.body
@@ -10,7 +12,8 @@ const {view,process} = require("./bbsCtrl")
 //         res.send('success')
 //     })
 // })
-route.get("/bbsList",view.list)
+route.get("/bbsList",isLogin ,view.list)
+route.get("/log",isLogin,view.log)
 
 
 route.get("/bbs",process.getList);

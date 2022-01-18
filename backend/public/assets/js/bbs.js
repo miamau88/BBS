@@ -75,8 +75,8 @@ function modiFunc(e) {
 modiBtn.addEventListener("click", (e) => {
   modiFunc(e);
 });
-const saveBtn = document.querySelector(".saveBtn");
-saveBtn.addEventListener("click", () => {
+
+$saveBtn.addEventListener("click", () => {
   modiApi($num.innerText, $title.value, $txtarea.innerText)
     .then((res) => res.json())
     // .then((res) => modalCloseNone(), setTimeout(() => { location.reload() },500))

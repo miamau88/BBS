@@ -1,5 +1,10 @@
 const mysql = require("mysql2/promise");
 const db = require("./../../config.js");
+const moment = require("moment"); //설치한거
+require("moment-timezone");
+moment.tz.setDefault("Asia/Seoul");
+const date = moment().format("YYYY-MM-DD HH:mm:ss");
+console.log(date);
 // is_Object = function (a) {
 //   return !!a && a.constructor === Object;
 // };
@@ -7,8 +12,12 @@ const db = require("./../../config.js");
 //-- select * from 메인 테이블 left join 테이블명 on 메인테이블.컬럼 = 테이블.컬럼
 const view = {
   list: (req, res) => {
-    res.render("bbsList.ejs",{id:1});
+    res.render("bbsList.ejs", { id: 1 ,date});
     console.log(req.session.userid)
+    
+  },  
+  log : (req,res) =>{    
+    res.render("log.ejs")
   },
 };
 const process = {

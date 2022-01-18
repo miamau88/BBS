@@ -17,13 +17,13 @@
 function nowTime() {
   var dateM = moment().format('YYYY-MM-DD HH:mm:ss')  
   var clock= document.querySelector('#clock')
-  clock.innerText = dateM;
+  // clock.innerText = date;
 }
 setInterval(nowTime, 1000);
   </script>
   <body data-id='<%=id%>'>    
     <div class="container bbs-list">
-      <div id="clock"></div>
+      <div id="clock"><%=date%></div>
       <div class="bbs-con">        
         <div class="titlebox">FREE BOARD</div>
         <div class="boardlist">
@@ -65,7 +65,7 @@ setInterval(nowTime, 1000);
         <!-- bbs-con end -->
         <div class="wrt-btnbox"><a class="modal-closeX">닫기</a></div>
         <div class="wrt-btnbox modiBtnBox"><a class="modiBtn modal-closeX">글수정</a></div>
-        <div class="wrt-btnbox modiBtnBox"><a class="saveBtn modal-closeX">저장</a></div>
+        <div class="wrt-btnbox saveBtnBox"><a class="saveBtn modal-closeX">저장</a></div>
         <div class="wrt-btnbox wrtbtn"><a class="writeBtn write-close">글등록</a></div>
         <!-- <div class="wrt-btnbox"><a href="bbsmodi.html">수정</a></div>  -->
       </div>

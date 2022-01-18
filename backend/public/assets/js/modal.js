@@ -4,31 +4,35 @@ const $date = document.querySelector(".modal  .date");
 const $member = document.querySelector(".modal .member");
 const $txtarea = document.querySelector(".modal #modi-txtarea");
 const modiBtn = document.querySelector(".modal .modiBtn");
-
+const $saveBtn = document.querySelector(".saveBtn");
 const modal = document.querySelector(".modal");
 const btnOpenPopup = document.querySelector(".modalOpen");
 const modalClose = document.querySelector(".modal-closeX");
 const wrtBtn = document.querySelector(".wrtbtn");
 const modiBtnBox = document.querySelector(".modiBtnBox");
+const $saveBtnBox = document.querySelector(".saveBtnBox");
 function modalOpen(type) {
     // debugger
   modal.style.display = "block";
   if (type == "edit") {
     wrtBtn.style.display = "none";    
-    modiBtnBox.style.display = "block";    
+    modiBtnBox.style.display = "none";    
     $title.readOnly = false;
     $txtarea.readOnly = false;    
+    $saveBtnBox.style.display = "block"
   }
   if (type == "add") {
     
     modiBtnBox.style.display = "none";    
     wrtBtn.style.display = "block";
+    $saveBtnBox.style.display = "none"
   }
   if(type == "view"){
     $title.readOnly = true;
     $txtarea.readOnly = true;    
     wrtBtn.style.display = "none"
     modiBtnBox.style.display = "block";    
+    $saveBtnBox.style.display = "none"
     
   }
 }

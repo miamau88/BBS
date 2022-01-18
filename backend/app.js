@@ -74,8 +74,18 @@ console.log(date);
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: true,
-    }))
+    })
+    )
     app.use(express.json());
+    
+  
+    // app.use('/bbsList',(req, res,next) => {
+    //   console.log('middleware')
+    //   next()
+    // }, (req, res, next) => {
+    //   console.log('22')
+    //   next()
+    // })
     app.use("/", bbsRoute);
     app.use("/", loginRoute);
     
