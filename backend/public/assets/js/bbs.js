@@ -4,9 +4,8 @@ fetch("http://localhost:5000/bbs")
   .then((res) => res.json())
   .then((res) => {
     bbs = res;
-    list();
-    delFunc();
-    modiFunc();
+    list();    
+    
     // console.log(bbs)
   });
 const list = () => {
@@ -18,13 +17,22 @@ const list = () => {
         <div class=title>${bbslist.title}</div>
         <div class=date>${dateFormat(bbslist.regdate)}</div>
         <div class=member>${bbslist.member} 
-        <button class="btnModi">수정</button>
+        <button class="btnModi">수정</button>      
         <button class="btndel"> 삭제</button>
         </div>
         </li> `;
   };
+  
   ul.innerHTML = bbs.map(bbsMap).join("");
-};
+  const btnDel = document.querySelectorAll(".btndel");
+  for (let i = 0; i < btnDel.length; i++) {
+    btnDel[i].addEventListener("click",delFunc);
+  }
+  const btnModiPopup = document.querySelectorAll(".btnModi");
+  for (let i = 0; i < btnModiPopup.length; i++) {
+    btnModiPopup[i].addEventListener("click",modiFunc)
+  }
+}
 
 function dateFormat(date) {
   // moment
@@ -34,28 +42,25 @@ function dateFormat(date) {
   return `${res[0]}:${res[1]}`;
 }
 
-function delFunc() {
-  const btnDel = document.querySelectorAll(".btndel");
-  for (let i = 0; i < btnDel.length; i++) {
-    btnDel[i].addEventListener("click", (e) => {
-      // delete도 함수로 만들기
-      const id = e.target.parentNode.parentNode.dataset.id;
-      console.log(id);
-      fetch(`http://localhost:5000/bbs`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify({ no: id }),
+function delFunc(e) {
+  
+    // delete도 함수로 만들기
+    const id = e.target.parentNode.parentNode.dataset.id;
+    console.log(id);
+    fetch(`http://localhost:5000/bbs`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify({ no: id }),
+    })
+      .then(() => {
+        const bbsi = bbs.findIndex((v) => v.id == id)
+        bbs.splice(bbsi, 1);
+        e.target.parentNode.parentNode.remove();
+        console.log(bbs);
       })
-        .then(() => {
-          bbs.splice(i, 1);
-          e.target.parentNode.parentNode.remove();
-          console.log(bbs);
-        })
-        .catch((err) => alert(err));
-    });
-  }
+      .catch((err) => alert(err));
 }
 const num = document.querySelector(".modal  .num");
 const title = document.querySelector(".modal  #title-Input");
@@ -63,50 +68,45 @@ const date = document.querySelector(".modal  .date");
 const member = document.querySelector(".modal .member");
 const txtarea = document.querySelector(".modal #modi-txtarea");
 const modiBtn = document.querySelector(".modal .modiBtn");
-function modiFunc() {
-  const btnModiPopup = document.querySelectorAll(".btnModi");
-  for (let i = 0; i < btnModiPopup.length; i++) {
-    btnModiPopup[i].addEventListener("click", (e) => {
-      modalOpen("edit");
-
-      // 수정과 관련된 함수 새로 생성
-      const id = e.target.closest("li").dataset.id; // closest 사용
-      //for (let i = 0; i < bbs.length; i++) { //  find or findIndex 함수로 변경
-      const res = bbs.find((v) => v.no == id); //  find or findIndex 함수로 변경
-      console.log(res);
-      num.innerText = res.no;
-      title.value = res.title;
-      date.innerText = res.regdate;
-      member.innerText = res.member;
-      txtarea.innerText = res.msg;
-    });
-  }
-  function reload() {
-    (location || window.location || document.location).reload();
-  }
-
-  function delay(ms) {
-    return setTimeout(() => {
-      reload()      
-    }, ms);    
-  }
-  modiBtn.addEventListener("click", () => {
-    fetch(`http://localhost:5000/bbs`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json;charset=utf-8" },
-      body: JSON.stringify({
-        no: num.innerText,
-        title: title.value,
-        msg: txtarea.value,
-      }),
-    })
-      .then((res) => res.json())
-      // .then((res) => modalCloseNone(), setTimeout(() => { location.reload() },500))
-      .then((res) => modalCloseNone(),delay(50))
-      .catch((err) => alert(err));
-  });
+function modiFunc(e) {
+  modalOpen("edit");
+  // 수정과 관련된 함수 새로 생성
+  const id = e.target.closest("li").dataset.id; // closest 사용
+  //for (let i = 0; i < bbs.length; i++) { //  find or findIndex 함수로 변경
+  const res = bbs.find((v) => v.no == id); //  find or findIndex 함수로 변경
+  console.log(res);
+  num.innerText = res.no;
+  title.value = res.title;
+  date.innerText = res.regdate;
+  member.innerText = res.member;
+  txtarea.innerText = res.msg;
 }
 
+modiBtn.addEventListener("click", () => {
+  fetch(`http://localhost:5000/bbs`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json;charset=utf-8" },
+    body: JSON.stringify({
+      no: num.innerText,
+      title: title.value,
+      msg: txtarea.value,
+    }),
+  })
+    .then((res) => res.json())
+    // .then((res) => modalCloseNone(), setTimeout(() => { location.reload() },500))
+    .then((res) => modalCloseNone(),delay(50))
+    .catch((err) => alert(err));
+});
+
+function reload() {
+  (location || window.location || document.location).reload();
+}
+
+function delay(ms) {
+  return setTimeout(() => {
+    reload()      
+  }, ms);    
+}
 const modal = document.querySelector(".modal");
 const btnOpenPopup = document.querySelector(".modalOpen");
 const modalClose = document.querySelector(".modal-closeX");
@@ -167,9 +167,7 @@ writeBtn.addEventListener("click", () => {
         member: res.member,
         msg: res.msg,
       });
-      list();
-      modiFunc();
-      delFunc();
+      list();   
       modalCloseNone();
     })
     .catch((err) => alert(err));
