@@ -63,12 +63,9 @@ function modiFunc(e) {
   const id = e.target.closest("li").dataset.id; // closest 사용
   //for (let i = 0; i < bbs.length; i++) { //  find or findIndex 함수로 변경
   const res = bbs.find((v) => v.no == id); //  find or findIndex 함수로 변경
+  
   console.log(res);
-  num.innerText = res.no;
-  title.value = res.title;
-  date.innerText = res.regdate;
-  member.innerText = res.member;
-  txtarea.innerText = res.msg;
+  modalSetData(res.no,res.title,res.regdate,res.member,res.msg)
 }
 
 modiBtn.addEventListener("click", () => {
@@ -91,10 +88,8 @@ function delay(ms) {
 
 btnOpenPopup.addEventListener("click", () => {
   modalOpen("add");
-  title.value = "";
-  txtarea.value = "";
-  num.innerText = "";
-  date.innerText = "";
+  
+  modalSetData()
 });
 
 // modalClose.addEventListener("click", none); // 콜백함수

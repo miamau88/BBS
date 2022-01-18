@@ -1,8 +1,8 @@
-const num = document.querySelector(".modal  .num");
-const title = document.querySelector(".modal  #title-Input");
-const date = document.querySelector(".modal  .date");
-const member = document.querySelector(".modal .member");
-const txtarea = document.querySelector(".modal #modi-txtarea");
+const $num = document.querySelector(".modal  .num");
+const $title = document.querySelector(".modal  #title-Input");
+const $date = document.querySelector(".modal  .date");
+const $member = document.querySelector(".modal .member");
+const $txtarea = document.querySelector(".modal #modi-txtarea");
 const modiBtn = document.querySelector(".modal .modiBtn");
 
 const modal = document.querySelector(".modal");
@@ -27,3 +27,13 @@ function modalCloseNone() {
   modal.style.display = "none";
 }
 modalClose.addEventListener("click", modalCloseNone);
+
+function modalSetData(no ="",title="",regdate="",member="",msg=""){
+    $num.innerText = no
+    $title.value = title
+    $date.innerText = regdate
+    $member.innerText = member
+    $txtarea.innerText = msg
+    
+
+}
