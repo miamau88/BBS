@@ -1,6 +1,6 @@
 
 let bbs = [];
-fetch("http://localhost:5000/bbs")
+getApi()
   .then((res) => res.json())
   .then((res) => {
     bbs = res;
@@ -47,13 +47,7 @@ function delFunc(e) {
     // delete도 함수로 만들기
     const id = e.target.parentNode.parentNode.dataset.id;
     console.log(id);
-    fetch(`http://localhost:5000/bbs`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify({ no: id }),
-    })
+    delApi(id)
       .then(() => {
         const bbsi = bbs.findIndex((v) => v.id == id)
         bbs.splice(bbsi, 1);
@@ -78,15 +72,7 @@ function modiFunc(e) {
 }
 
 modiBtn.addEventListener("click", () => {
-  fetch(`http://localhost:5000/bbs`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json;charset=utf-8" },
-    body: JSON.stringify({
-      no: num.innerText,
-      title: title.value,
-      msg: txtarea.value,
-    }),
-  })
+modiApi(num.innerText,title.value,txtarea.innerText)
     .then((res) => res.json())
     // .then((res) => modalCloseNone(), setTimeout(() => { location.reload() },500))
     .then((res) => modalCloseNone(),delay(50))
@@ -122,15 +108,7 @@ writeBtn.addEventListener("click", () => {
   const txtarea = document.querySelector("#modi-txtarea");
 
   // 배열 마지막 요소의  no에 + 1
-  fetch(`http://localhost:5000/bbs`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json;charset=utf-8" },
-    body: JSON.stringify({
-      title: input.value,
-      member: member,
-      msg: txtarea.value,
-    }),
-  })
+wrtApi(title.value,member,txtarea.value)
     .then((res) => res.json())
     .then((res) => {
       console.log(res);

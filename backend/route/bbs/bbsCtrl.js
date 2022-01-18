@@ -64,7 +64,7 @@ const process = {
       const conn = await mysql.createConnection(db);
       const query = `update bbs set title=?,msg=? where no=? `;
       const param = [title, msg, no];
-      const [rows] = await conn.queyr(query, param);
+      const [rows] = await conn.query(query, param);
       res.send(rows);
     } catch (err) {
       console.log(err);
