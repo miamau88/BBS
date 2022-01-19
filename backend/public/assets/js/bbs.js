@@ -48,12 +48,13 @@ function dateFormat(date) {
 }
 
 function delFunc(e) {
+ 
   // delete도 함수로 만들기
   const id = e.target.parentNode.parentNode.dataset.id;
   console.log(id);
   delApi(id)
-    .then(() => {
-      modalCloseNone();
+  .then(() => {
+      modalCloseNone()
       const bbsi = bbs.findIndex((v) => v.id == id);
       bbs.splice(bbsi, 1);
       e.target.parentNode.parentNode.remove();
@@ -63,57 +64,54 @@ function delFunc(e) {
 }
 
 function modiFunc(e) {
-  const type = modalOpen("edit");
-  console.log(type)
-
+  modalOpen("edit");
   // 수정과 관련된 함수 새로 생성
   const id = $num.innerText; // closest 사용
   //for (let i = 0; i < bbs.length; i++) { //  find or findIndex 함수로 변경
   const res = bbs.find((v) => v.no == id); //  find or findIndex 함수로 변경
   console.log(res);
   modalSetData(res.no, res.title, res.regdate, res.member, res.msg);
-  
 }
 
 modiBtn.addEventListener("click", (e) => {
   modiFunc(e);
 });
-btnOpenPopup.addEventListener("click", () => {
-  const type = modalOpen("add");
-  modalSetData();  
-  $saveBtn.addEventListener("click", () => {    
-    console.log(type);
+$saveBtn.addEventListener("click", (e) => {
+  // debugger
+  const saveBtnId =e.target.dataset.type
+  console.log(saveBtnId);
+  if(saveBtnId == "edit"){
+  modiApi($num.innerText, $title.value, $txtarea.value)
+    .then((res) => res.json())
+    // .then((res) => modalCloseNone(), setTimeout(() => { location.reload() },500))
+    .then((res) => modalCloseNone(),delay(50))
+    .catch((err) => alert(err));
     
-    modiApi($num.innerText, $title.value, $txtarea.value)
-      .then((res) => res.json())
-      // .then((res) => modalCloseNone(), setTimeout(() => { location.reload() },500))
-      .then((res) => modalCloseNone(), delay(50))
-      .catch((err) => alert(err));
-    
+
+  }
+  if (saveBtnId == "add") {
     const body = document.querySelector("body");
     const member = body.dataset.id;
-  
-    if (type == "add") {
-      // 배열 마지막 요소의  no에 + 1
-      wrtApi($title.value, member, $txtarea.value)
-        .then((res) => res.json())
-        .then((res) => {
-          console.log(res);
-          bbs.push({
-            no: res.no,
-            title: res.title,
-            regdate: res.regdate,
-            member: res.member,
-            msg: res.msg,
-          });
-          list();
-          modalCloseNone();
-        })
-        .catch((err) => alert(err));
-      console.log(bbs);
-    }
-  });
+    // 배열 마지막 요소의  no에 + 1
+    wrtApi($title.value, member, $txtarea.value)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        bbs.push({
+          no: res.no,
+          title: res.title,
+          regdate: res.regdate,
+          member: res.member,
+          msg: res.msg,
+        });
+        list();
+        modalCloseNone();
+      })
+      .catch((err) => alert(err));
+    console.log(bbs);
+  }
 });
+
 function reload() {
   (location || window.location || document.location).reload();
 }
@@ -124,32 +122,19 @@ function delay(ms) {
   }, ms);
 }
 
+btnOpenPopup.addEventListener("click", () => {
+  modalOpen("add");
+
+  modalSetData();
+});
+
 // modalClose.addEventListener("click", none); // 콜백함수
 const writeBtn = document.querySelector(".writeBtn");
 const input = document.querySelector("input");
 
 // $saveBtn.addEventListener("click", () => {
 //   // let no = bbs.length !== 0 ? Number(bbs[bbs.length - 1].no) + 1 : 1
-//   const body = document.querySelector("body");
-//   const member = body.dataset.id;
 
-//   // 배열 마지막 요소의  no에 + 1
-//   wrtApi($title.value,member,$txtarea.value)
-//     .then((res) => res.json())
-//     .then((res) => {
-//       console.log(res);
-//       bbs.push({
-//         no: res.no,
-//         title: res.title,
-//         regdate: res.regdate,
-//         member: res.member,
-//         msg: res.msg,
-//       });
-//       list();
-//       modalCloseNone();
-//     })
-//     .catch((err) => alert(err));
-//   console.log(bbs);
 // });
 
 // 수정 기능 구현 (제목, 내용 변경 가능)

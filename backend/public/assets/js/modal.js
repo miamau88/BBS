@@ -20,15 +20,17 @@ function modalOpen(type) {
     $title.readOnly = false;
     $txtarea.readOnly = false;    
     $saveBtnBox.style.display = "block"    
-    return type;
+    $saveBtn.setAttribute("data-type","edit");
+    
   }
   if (type == "add") {
     $title.readOnly = false;
     $txtarea.readOnly = false;    
     modiBtnBox.style.display = "none";    
     wrtBtn.style.display = "none";
-    $saveBtnBox.style.display = "block"        
-    return type;
+    $saveBtnBox.style.display = "block"       
+    $saveBtn.setAttribute("data-type","add");
+    
   }
   if(type == "view"){
     $title.readOnly = true;
@@ -36,6 +38,7 @@ function modalOpen(type) {
     wrtBtn.style.display = "none"
     modiBtnBox.style.display = "block";    
     $saveBtnBox.style.display = "none"
+    $saveBtn.setAttribute("data-type","view");
     
     
   }
