@@ -19,14 +19,16 @@ function modalOpen(type) {
     modiBtnBox.style.display = "none";    
     $title.readOnly = false;
     $txtarea.readOnly = false;    
-    $saveBtnBox.style.display = "block"
+    $saveBtnBox.style.display = "block"    
+    return type;
   }
   if (type == "add") {
     $title.readOnly = false;
     $txtarea.readOnly = false;    
     modiBtnBox.style.display = "none";    
     wrtBtn.style.display = "none";
-    $saveBtnBox.style.display = "block"    
+    $saveBtnBox.style.display = "block"        
+    return type;
   }
   if(type == "view"){
     $title.readOnly = true;
@@ -34,6 +36,7 @@ function modalOpen(type) {
     wrtBtn.style.display = "none"
     modiBtnBox.style.display = "block";    
     $saveBtnBox.style.display = "none"
+    
     
   }
 }
