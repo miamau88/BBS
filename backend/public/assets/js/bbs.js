@@ -48,11 +48,13 @@ function dateFormat(date) {
 }
 
 function delFunc(e) {
+ 
   // delete도 함수로 만들기
   const id = e.target.parentNode.parentNode.dataset.id;
   console.log(id);
   delApi(id)
-    .then(() => {
+  .then(() => {
+      modalCloseNone()
       const bbsi = bbs.findIndex((v) => v.id == id);
       bbs.splice(bbsi, 1);
       e.target.parentNode.parentNode.remove();
@@ -77,7 +79,7 @@ modiBtn.addEventListener("click", (e) => {
 });
 
 $saveBtn.addEventListener("click", () => {
-  modiApi($num.innerText, $title.value, $txtarea.innerText)
+  modiApi($num.innerText, $title.value, $txtarea.value)
     .then((res) => res.json())
     // .then((res) => modalCloseNone(), setTimeout(() => { location.reload() },500))
     .then((res) => modalCloseNone(),delay(50))
@@ -104,7 +106,7 @@ btnOpenPopup.addEventListener("click", () => {
 const writeBtn = document.querySelector(".writeBtn");
 const input = document.querySelector("input");
 
-writeBtn.addEventListener("click", () => {
+$saveBtn.addEventListener("click", () => {
   // let no = bbs.length !== 0 ? Number(bbs[bbs.length - 1].no) + 1 : 1
   const body = document.querySelector("body");
   const member = body.dataset.id;

@@ -22,10 +22,11 @@ function modalOpen(type) {
     $saveBtnBox.style.display = "block"
   }
   if (type == "add") {
-    
+    $title.readOnly = false;
+    $txtarea.readOnly = false;    
     modiBtnBox.style.display = "none";    
-    wrtBtn.style.display = "block";
-    $saveBtnBox.style.display = "none"
+    wrtBtn.style.display = "none";
+    $saveBtnBox.style.display = "block"    
   }
   if(type == "view"){
     $title.readOnly = true;
