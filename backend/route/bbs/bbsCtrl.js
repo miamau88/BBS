@@ -60,11 +60,13 @@ const process = {
       // console.log(req.body);
       const conn = await mysql.createConnection(db);
       const query = `insert into bbs (title,member,msg) value(?,?,?)`;
-      const param = [title, member, msg];
+      const param = [title,member, msg];
       const [rows] = await conn.query(query, param);
-      const query2 = `SELECT no,title,regdate,msg,name as member FROM bbs join user on bbs.member = user.idx order by no desc limit 1`;
-      const [rows2] = await conn.query(query2);
+      const param2 = [member];
+      const query2 = `SELECT * FROM bbs where member=? order by no desc limit 1`;
+      const [rows2] = await conn.query(query2,param2);
       res.send(rows2[0]);
+      console.log(rows2[0])
     } catch (err) {
       console.log(err);
     }

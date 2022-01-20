@@ -92,18 +92,20 @@ $saveBtn.addEventListener("click", (e) => {
   if (saveBtnId == "add") {
     const body = document.querySelector("body");
     const member = body.dataset.id;
+    
+    // console.log(member)
     // 배열 마지막 요소의  no에 + 1
     // debugger
-    wrtApi($title.value, member, $txtarea.value)
+    wrtApi($title.value,member,$txtarea.value)
       // .then((res) => res.json())
       .then((res) => {
         console.log(res);
         bbs.push({
-          no: res.no,
-          title: res.title,
-          regdate: res.regdate,
-          member: res.member,
-          msg: res.msg,
+          no: res.data.no,
+          title: res.data.title,
+          regdate: res.data.regdate,
+          member: res.data.member,
+          msg: res.data.msg,
         });
         list();
         modalCloseNone();

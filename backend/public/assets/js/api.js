@@ -20,12 +20,9 @@ const modiApi = (no, title, msg) =>
       msg: msg,
     }),
   });
-const wrtApi = async(title, member, msg) => {
-  // fetch(`${domain}/bbs`, {
-  const url = "http://localhost:5000/bbs"
-  await axios.post(url, { title: title, member: member, msg: msg })
+const wrtApi = (title,member, msg) => axios.post(`${domain}/bbs`,{ title: title, member: member, msg: msg })
   
-}
+
 
     
   // });
