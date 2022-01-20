@@ -93,8 +93,9 @@ $saveBtn.addEventListener("click", (e) => {
     const body = document.querySelector("body");
     const member = body.dataset.id;
     // 배열 마지막 요소의  no에 + 1
+    // debugger
     wrtApi($title.value, member, $txtarea.value)
-      .then((res) => res.json())
+      // .then((res) => res.json())
       .then((res) => {
         console.log(res);
         bbs.push({

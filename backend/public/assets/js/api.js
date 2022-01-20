@@ -20,16 +20,15 @@ const modiApi = (no, title, msg) =>
       msg: msg,
     }),
   });
-const wrtApi = (title, member, msg) =>
-  fetch(`${domain}/bbs`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json;charset=utf-8" },
-    body: JSON.stringify({
-      title: title,
-      member: member,
-      msg: msg,
-    }),
-  });
+const wrtApi = async(title, member, msg) => {
+  // fetch(`${domain}/bbs`, {
+  const url = "http://localhost:5000/bbs"
+  await axios.post(url, { title: title, member: member, msg: msg })
+  
+}
+
+    
+  // });
 // moment.tz.setDefault("Asia/Seoul");
 // var date = moment().format("YYYY-MM-DD HH:mm:ss");
 // const svtimeApi = async () => {
