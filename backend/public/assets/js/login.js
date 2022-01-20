@@ -27,8 +27,9 @@ async function loginCheck() {
     if (res.status == "success") {
       alert("성공");
       location.href = "/bbsList";
-    } else {
+    }if(res.status == "fail") {
       alert("fail");
+      location.href = "/";
     }
   } catch (err) {
     console.log(err);

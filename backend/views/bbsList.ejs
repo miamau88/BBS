@@ -8,22 +8,17 @@
     <link rel="stylesheet" href="assets/css/style.css" />    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./assets/js/modal.js" defer></script>        
     <script src="./assets/js/api.js" defer></script>        
     <script src="./assets/js/bbs.js" defer></script>        
     <title>BBS LIST</title>
   </head>
-  <script>
-function nowTime() {
-  var dateM = moment().format('YYYY-MM-DD HH:mm:ss')  
-  var clock= document.querySelector('#clock')
-  // clock.innerText = date;
-}
-setInterval(nowTime, 1000);
-  </script>
-  <body data-id='<%=id%>'>    
+  
+  <body>    
+    <%-include('menu.ejs')%>
     <div class="container bbs-list">
-      <div id="clock"><%=date%></div>
+      <div id="clock"></div>
       <div class="bbs-con">        
         <div class="titlebox">FREE BOARD</div>
         <div class="boardlist">

@@ -139,3 +139,11 @@ const input = document.querySelector("input");
 
 // 수정 기능 구현 (제목, 내용 변경 가능)
 //
+
+// function date(){
+//    //svtimeApi()
+//    var t = new Date();
+// t.setSeconds(t.getSeconds() + 10);
+// console.log(t)
+// }
+// setInterval(date, 1000);

@@ -4,6 +4,7 @@ const {view,process} = require("./loginCtrl")
 route.post("/login",process.login)     
 route.post("/signUp",process.signUp)     
 route.post("/idCheck",process.idCheck)  
+route.get("/logout",process.logout)  
 
 route.get("/",view.login)
 route.get("/signUp",view.signUp)

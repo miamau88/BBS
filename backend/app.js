@@ -4,9 +4,10 @@ const bbsRoute = require("./route/bbs");
 const loginRoute = require("./route/login");
 const path = require("path");
 const moment = require("moment"); //설치한거
-const mysql = require("mysql2");
+const mysql2 = require("mysql2/promise");
 const session = require("express-session");
 const MysqlStore = require("express-mysql-session")(session);
+const db = require("./config");
 const ejs = require('ejs');
 const axios = require('axios');
 require("moment-timezone");
@@ -62,7 +63,11 @@ console.log(date);
     // };
     // b()
     
-    
+
+
+
+var connection = mysql2.createPool(db);
+var sessionStore = new MysqlStore({}, connection);
     
     
     
@@ -74,6 +79,15 @@ console.log(date);
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: true,
+      store: sessionStore,
+      // schema: {
+      //   tableName: 'sessions',
+      //   columnNames: {
+      //     session_id: 'session_id',
+      //     expires: 'expires',
+      //     data: 'data'
+      //   }
+      // }
     })
     )
     app.use(express.json());
